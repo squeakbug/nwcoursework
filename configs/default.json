@@ -1,0 +1,108 @@
+{
+  "status": "ok",
+  "errors": [],
+  "config": [
+    {
+      "file": "configs/default.conf",
+      "status": "ok",
+      "errors": [],
+      "parsed": [
+        {
+          "directive": "http",
+          "line": 1,
+          "args": [],
+          "block": [
+            {
+              "directive": "upstream",
+              "line": 2,
+              "args": [
+                "backend"
+              ],
+              "block": [
+                {
+                  "directive": "round_robin",
+                  "line": 3,
+                  "args": []
+                },
+                {
+                  "directive": "server",
+                  "line": 4,
+                  "args": [
+                    "127.0.0.1:8081"
+                  ]
+                },
+                {
+                  "directive": "server",
+                  "line": 5,
+                  "args": [
+                    "127.0.0.1:8083"
+                  ]
+                }
+              ]
+            },
+            {
+              "directive": "server",
+              "line": 8,
+              "args": [],
+              "block": [
+                {
+                  "directive": "listen",
+                  "line": 9,
+                  "args": [
+                    "127.0.0.1:8080"
+                  ]
+                },
+                {
+                  "directive": "location",
+                  "line": 11,
+                  "args": [
+                    "/"
+                  ],
+                  "block": [
+                    {
+                      "directive": "proxy_pass",
+                      "line": 12,
+                      "args": [
+                        "127.0.0.1:8081"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "directive": "server",
+              "line": 16,
+              "args": [],
+              "block": [
+                {
+                  "directive": "listen",
+                  "line": 17,
+                  "args": [
+                    "127.0.0.1:8082"
+                  ]
+                },
+                {
+                  "directive": "location",
+                  "line": 19,
+                  "args": [
+                    "/"
+                  ],
+                  "block": [
+                    {
+                      "directive": "proxy_pass",
+                      "line": 20,
+                      "args": [
+                        "127.0.0.1:8083"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
